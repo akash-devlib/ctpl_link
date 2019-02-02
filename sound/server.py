@@ -9,7 +9,7 @@ frames = []
 def udpStream(CHUNK):
 
     udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    udp.bind(("172.20.4.191", 12346))
+    udp.bind(("thisserveraddresss", 6000))
 
     while True:
         soundData, addr = udp.recvfrom(CHUNK * CHANNELS * 2)
