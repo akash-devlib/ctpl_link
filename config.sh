@@ -1,9 +1,9 @@
 
-SELF_IP=172.20.4.191
-OPTHER_IP=172.20.4.20
-sed -ie "s/thisserveraddresss/$SELF_IP/ga" video/main.py
+#SELF_IP=172.20.4.20
+#OTHER_IP=172.20.4.191
+sed -ie "s/thisserveraddress/$SELF_IP/g" video/main.py
 
-sed -ie "s/thisserveraddresss/$SELF_IP/ga" sound/server.py
+sed -ie "s/thisserveraddress/$SELF_IP/g" sound/server.py
 
-sed -ie "s/otherserveraddresss/$OTHER_IP/ga" sound/client.py
+sed -ie "s/otherserveraddress/$OTHER_IP/g" sound/client.py
 

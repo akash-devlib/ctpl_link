@@ -9,7 +9,7 @@ def udpStream():
 
     while True:
         if len(frames) > 0:
-            udp.sendto(frames.pop(0), ("otherserveraddress", 6000))
+            udp.sendto(frames.pop(0), ("", 6000))
 
     udp.close()
 
