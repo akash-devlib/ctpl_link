@@ -33,6 +33,7 @@ cd /opt/ctpl_link
 sed -ie "s/thisserveraddress/$SELF_IP/g" /opt/ctpl_link/video/main.py
 sed -ie "s/thisserveraddress/$SELF_IP/g" /opt/ctpl_link/sound/server.py
 sed -ie "s/otherserveraddress/$OTHER_IP/g" /opt/ctpl_link/sound/client.py
+sed -ie "s/otherserveraddress/$OTHER_IP/g" /opt/ctpl_link/ctpl_link.sh
 
 if ! [ "$(getent passwd vlink)"  ]; then
    useradd -d /home/vlink vlink
@@ -46,7 +47,7 @@ chmod -R 755  /opt/ctpl_link
 
 #Configure autologin in gdm
 cp /opt/ctpl_link/custom.conf /etc/gdm3/custom.conf
-systemctl restart gdm3 
+systemctl restart gdm3
 
 VIDEO_URL=${OTHER_IP}:5000
 su vlink -c "/opt/ctpl_link/ctpl_link.sh ${VIDEO_URL}"
