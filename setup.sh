@@ -23,7 +23,7 @@ fi
 if ! sudo python3 get-pip.py; then
     RET=1; exit $RET
 fi
-if ! sudo pip3 install numpy; then
+if ! sudo pip3 install numpy flask; then
     RET=1; exit $RET
 fi
 if ! pip3 install opencv-python==3.4.4.19; then
@@ -49,7 +49,10 @@ chmod -R 755  /opt/ctpl_link
 cp /opt/ctpl_link/custom.conf /etc/gdm3/custom.conf
 
 systemctl stop gdm3
-kill -9 $(ps -aef | grep vlink | grep gdm | grep -v grep | awk '{print $2}')
+PID=$(ps -aef | grep vlink | grep gdm | grep -v grep | awk '{print $2}' | xargs)
+if [ x != x$PID ]; then
+    kill -9 $PID
+fi
 systemctl start gdm3
 sleep 60
 
