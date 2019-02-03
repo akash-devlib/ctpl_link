@@ -44,7 +44,11 @@ if ! [ "$(getent passwd vlink)"  ]; then
 fi
 chmod -R 777  /var/log/ctpl_link
 chmod -R 755  /opt/ctpl_link
-
+PID=$(ps -aef | grep python.py| grep vlink | grep -v grep | awk '{print $2}' | xargs)
+if ! [ -z "$PID" ]; then
+    kill -9 $PID
+fi
+s
 #Configure autologin in gdm
 cp /opt/ctpl_link/custom.conf /etc/gdm3/custom.conf
 
