@@ -5,6 +5,6 @@ export DISPLAY=:0
 nohup python3 video/main.py > ${LOG_DIR}/video.log  2>&1 &
 nohup python3 sound/server.py  > ${LOG_DIR}/audio_server.log  2>&1 &
 nohup python3 sound/client.py  > ${LOG_DIR}/audio_client.log  2>&1 &
-sleep 20
+sleep 40
 nohup firefox -new-window ${VIDEO_URL} &
 
