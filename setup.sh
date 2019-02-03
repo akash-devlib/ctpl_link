@@ -47,7 +47,11 @@ chmod -R 755  /opt/ctpl_link
 
 #Configure autologin in gdm
 cp /opt/ctpl_link/custom.conf /etc/gdm3/custom.conf
-systemctl restart gdm3
+
+systemctl stop gdm3
+kill -9 $(ps -aef | grep vlink | grep gdm | grep -v grep | awk '{print $2}')
+systemctl start gdm3
+sleep 60
 
 VIDEO_URL=${OTHER_IP}:5000
 su vlink -c "/opt/ctpl_link/ctpl_link.sh ${VIDEO_URL}"
