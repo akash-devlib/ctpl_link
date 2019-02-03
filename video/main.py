@@ -18,9 +18,13 @@ from camera import VideoCamera
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
+def about():
+        return render_template('about.html')
+
+@app.route('/configure')
 def index():
-    return render_template('index.html')
+    return render_template('')
 
 def gen(camera):
     while True:
@@ -33,5 +37,8 @@ def video_feed():
     return Response(gen(VideoCamera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
+def main():
+    app.run(host='172.25.10.210', debug=True)
+
 if __name__ == '__main__':
-    app.run(host='thisserveraddress', debug=True)
+    main()
