@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+    <head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<link rel="stylesheet" href="static/css/app.css">
+    </head>
+    <body >
+	<div id="wraper">
+	<nav class="navbar navbar-default navbar-fixed-top">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        		<span class="icon-bar"></span>
+        		<span class="icon-bar"></span>
+        		<span class="icon-bar"></span>                        
+      		</button>
+		<a class="navbar-brand brand-name" href="/">
+			<img src='static/backgorundImg/logo.png' alt='logo'>
+			<span>CTPL Link</span>
+		</a>
+	   </div>
+	   <div class="collapse navbar-collapse" id="myNavbar" >
+	      <ul class="nav navbar-nav navbar-right">
+	        <li id="l2"><a href="/configure"></a></li>
+	     </ul>
+	  </div>
+	</div>
+       </nav>
+
+    <div class="flex-item">
+    <div class="container">
+        <div class="row">
+	<h1 style="margin-top:60px"></h1>
+        <img id="bg" style="border-top-style: solid;margin-bottom: 200px;" src="{{ url_for('video_feed') }}">
+	<h2> Contact Us </h2>
+        <p>
+        <a href="mailto:tushar.shukla@coriolis.co.in"> tushar.shukla@coriolis.co.in </a>
+        </p>
+        </div>
+
+
+    </div>
+    </div>
+
+
+       <footer class="text-center">
+	  <p> 
+		Copyright <i class="fa fa-copyright"></i> 2017 Coriolis Technologies. All Rights Reserved.
+		 <a href="http://www.coriolis.co.in/" data-toggle="tooltip" title="Visit Coriolis Technologies">www.coriolis.co.in</a>
+	  </p> 
+	</footer>
+      </div>
+     </body>
+</html>
