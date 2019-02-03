@@ -39,6 +39,7 @@ mkdir -p  /home/vlink
 chown -R vlink:vlink /home/vlink
 echo "vlink:ssl12345" > /var/tmp/pass.txt
 cat /var/tmp/pass.txt | chpasswd
-chmod 777  /var/log/ctpl_link
-chmod 755  /opt/ctpl_link
+chmod -R 777  /var/log/ctpl_link
+chmod -R 755  /opt/ctpl_link
 
+su vlink -c "/opt/ctpl_link/ctpl_link.sh"
