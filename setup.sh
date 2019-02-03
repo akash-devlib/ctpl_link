@@ -50,7 +50,7 @@ cp /opt/ctpl_link/custom.conf /etc/gdm3/custom.conf
 
 systemctl stop gdm3
 PID=$(ps -aef | grep vlink | grep gdm | grep -v grep | awk '{print $2}' | xargs)
-if [ x != x$PID ]; then
+if ! [ -z "$PID" ]; then
     kill -9 $PID
 fi
 systemctl start gdm3
