@@ -34,12 +34,20 @@ sed -ie "s/thisserveraddress/$SELF_IP/g" /opt/ctpl_link/video/main.py
 sed -ie "s/thisserveraddress/$SELF_IP/g" /opt/ctpl_link/sound/server.py
 sed -ie "s/otherserveraddress/$OTHER_IP/g" /opt/ctpl_link/sound/client.py
 
-useradd -d /home/vlink vlink
-mkdir -p  /home/vlink
-chown -R vlink:vlink /home/vlink
-echo "vlink:ssl12345" > /var/tmp/pass.txt
-cat /var/tmp/pass.txt | chpasswd
+if ! [ "$(getent passwd vlink)"  ]; then
+   useradd -d /home/vlink vlink
+   mkdir -p  /home/vlink
+   chown -R vlink:vlink /home/vlink
+   echo "vlink:ssl12345" > /var/tmp/pass.txt
+   cat /var/tmp/pass.txt | chpasswd
+fi
 chmod -R 777  /var/log/ctpl_link
 chmod -R 755  /opt/ctpl_link
 
-su vlink -c "/opt/ctpl_link/ctpl_link.sh"
+#Configure autologin in gdm
+cp /opt/ctpl_link/custom.conf /etc/gdm3/custom.conf
+systemctl restart gdm3 
+
+VIDEO_URL=${OTHER_IP}:5000
+su vlink -c "/opt/ctpl_link/ctpl_link.sh ${VIDEO_URL}"
+
