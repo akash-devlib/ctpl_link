@@ -27,9 +27,10 @@ def play(stream, CHUNK):
                     except Exception as Err:
                         print (Err)
 
-if __name__ == "__main__":
+def main():
     FORMAT = pyaudio.paInt16
     CHUNK = 1024
+    global CHANNELS
     CHANNELS = 2
     RATE = 44100
 
@@ -50,3 +51,6 @@ if __name__ == "__main__":
     Tp.start()
     Ts.join()
     Tp.join()
+
+if __name__ == "__main__":
+    main()
