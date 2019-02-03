@@ -48,7 +48,6 @@ PID=$(ps -aef | grep python.py| grep vlink | grep -v grep | awk '{print $2}' | x
 if ! [ -z "$PID" ]; then
     kill -9 $PID
 fi
-s
 #Configure autologin in gdm
 cp /opt/ctpl_link/custom.conf /etc/gdm3/custom.conf
 
