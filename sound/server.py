@@ -1,5 +1,5 @@
 
-
+from time import sleep
 import pyaudio
 import socket
 from threading import Thread
@@ -27,30 +27,35 @@ def play(stream, CHUNK):
                     except Exception as Err:
                         print (Err)
 
-def main():
-    FORMAT = pyaudio.paInt16
-    CHUNK = 1024
-    global CHANNELS
-    CHANNELS = 2
-    RATE = 44100
+def start_server():
+    try:
+        FORMAT = pyaudio.paInt16
+        CHUNK = 1024
+        global CHANNELS
+        CHANNELS = 2
+        RATE = 44100
 
-    p = pyaudio.PyAudio()
+        p = pyaudio.PyAudio()
 
-    stream = p.open(format=FORMAT,
-                    channels = CHANNELS,
-                    rate = RATE,
-                    output = True,
-                    frames_per_buffer = CHUNK,
-                    )
+        stream = p.open(format=FORMAT,
+                        channels = CHANNELS,
+                        rate = RATE,
+                        output = True,
+                        frames_per_buffer = CHUNK,
+                        )
 
-    Ts = Thread(target = udpStream, args=(CHUNK,))
-    Tp = Thread(target = play, args=(stream, CHUNK,))
-    Ts.setDaemon(True)
-    Tp.setDaemon(True)
-    Ts.start()
-    Tp.start()
-    Ts.join()
-    Tp.join()
+        Ts = Thread(target = udpStream, args=(CHUNK,))
+        Tp = Thread(target = play, args=(stream, CHUNK,))
+        Ts.setDaemon(True)
+        Tp.setDaemon(True)
+        Ts.start()
+        Tp.start()
+        Ts.join()
+        Tp.join()
+    except Exception as Err:
+        print(Err)
+        sleep(0.5)
+        start_server()
 
 if __name__ == "__main__":
-    main()
+    start_server()
