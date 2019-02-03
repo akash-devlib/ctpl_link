@@ -44,13 +44,5 @@ def start():
         sleep(0.5)
         start()
 
-def main():
-    app.run(host='172.25.10.210', debug=True)
-
 if __name__ == '__main__':
-<<<<<<< HEAD
-    main()
-=======
     start()
-
->>>>>>> f2fc3523d9e0bbabc9fa9178a6e49d5de6367ded
