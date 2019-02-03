@@ -36,7 +36,7 @@ sed -ie "s/otherserveraddress/$OTHER_IP/g" /opt/ctpl_link/sound/client.py
 sed -ie "s/otherserveraddress/$OTHER_IP/g" /opt/ctpl_link/ctpl_link.sh
 
 if ! [ "$(getent passwd vlink)"  ]; then
-   useradd -d /home/vlink vlink
+   useradd -s /bin/bash -d /home/vlink vlink
    mkdir -p  /home/vlink
    chown -R vlink:vlink /home/vlink
    echo "vlink:ssl12345" > /var/tmp/pass.txt
