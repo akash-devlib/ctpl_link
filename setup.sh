@@ -54,7 +54,7 @@ if ! [ -z "$PID" ]; then
     kill -9 $PID
 fi
 systemctl start gdm3
-sleep 60
+sleep 30
 
 VIDEO_URL=${OTHER_IP}:5000
 su vlink -c "/opt/ctpl_link/ctpl_link.sh ${VIDEO_URL}"

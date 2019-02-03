@@ -27,6 +27,6 @@ ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ~/.ssh/id_rsa
 ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ~/.ssh/id_rsa_vlink -o PreferredAuthentications=publickey -o BatchMode=yes -p 22 $CLIENT_USERNAME@$CLIENT_IP  "cd /opt; git clone https://github.com/akgjec/ctpl_link"
 ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ~/.ssh/id_rsa_vlink -o PreferredAuthentications=publickey -o BatchMode=yes -p 22 $CLIENT_USERNAME@$CLIENT_IP " /opt/ctpl_link/tools/set_passwordlessSSH.sh -host ${SERVER_IP} -user ${SERVER_USERNAME} -pass ${SERVER_PASSWORD}"
 
-sudo /opt/ctpl_link/setup.sh $SERVER_IP $CLIENT_IP  | tee /var/log/ctpl_link/install.log
+nohup /opt/ctpl_link/setup.sh $SERVER_IP $CLIENT_IP  > /var/log/ctpl_link/install.log 2>&1 &
 ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ~/.ssh/id_rsa_vlink -o PreferredAuthentications=publickey -o BatchMode=yes -p 22 $CLIENT_USERNAME@$CLIENT_IP " sudo /opt/ctpl_link/setup.sh $CLIENT_IP $SERVER_IP | tee /var/log/ctpl_link/install.log "
 
