@@ -12,7 +12,7 @@ fi
 if ! sudo apt-get -y install build-essential cmake unzip pkg-config libjpeg-dev \
     libpng-dev libtiff-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev \
     libxvidcore-dev libx264-dev libgtk-3-dev libatlas-base-dev expect sshpass \
-    gfortran python3-dev firefox gnome-session gdm3 gnome-terminal; then
+    gfortran python3-dev firefox gnome-session gdm3 gnome-terminal python3-pyaudio; then
     RET=1; exit $RET
 fi
 sudo systemctl set-default graphical.target
@@ -23,7 +23,7 @@ fi
 if ! sudo python3 get-pip.py; then
     RET=1; exit $RET
 fi
-if ! sudo pip3 install numpy flask pyaudio; then
+if ! sudo pip3 install numpy flask; then
     RET=1; exit $RET
 fi
 if ! pip3 install opencv-python==3.4.4.19; then
