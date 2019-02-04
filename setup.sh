@@ -23,7 +23,7 @@ fi
 if ! sudo python3 get-pip.py; then
     RET=1; exit $RET
 fi
-if ! sudo pip3 install numpy flask; then
+if ! sudo pip3 install numpy flask pyaudio; then
     RET=1; exit $RET
 fi
 if ! pip3 install opencv-python==3.4.4.19; then
